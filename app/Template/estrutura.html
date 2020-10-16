@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="imagens/favicon.ico" type="image/x-icon">
+    <title>Project - p21</title>
 </head>
 <body>
     <style type="text/css">
         *{ margin: 0; padding: 0; }
-        body{ background-color: rgba(0, 0, 0, .2); }
+        body{ background-color: rgba(0, 0, 0, 0.120); }
         #container{width: 975px; background-color: #fff; margin: 0 auto; border: 5px solid black; }
         #menu{ border-bottom: 3px solid black; }
-        #conteudo{ background-color: rgb(150, 150, 150); padding: 20px 25px; }
+        #conteudo{ background-color: rgb(170, 170, 170); padding: 20px 25px; }
         .container-modal{ position: relative; height: 98vh; }
-        .modal{ color: #000; position: absolute; width: 400px; height: 200px; top: 50%; left: 50%; transform: translate(-125%, -115%); }
+        .modal{ color: #000; position: absolute; width: 400px; height: 200px; top: 50%; left: 50%; transform: translate(-123%, -115%); }
         ul { list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333; }
         li { float: left; border-right:1px solid rgb(0, 0, 0); }
         li a { display: block; text-align: center; padding: 14px 32px; text-decoration: none; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: white; }
         li a:hover:not(.active){ background-color: #111; }
         .active { background-color: #8CBF43; }
         p{ font-weight: bold; font-size: 125%; padding-right: 5px; }
+        ul li.right{ float:right; border: none; }
+        @media screen and (max-width: 950px) { ul li.right, ul li {float: none;}; }
     </style>
 
     <div class="container-modal">
@@ -34,22 +37,15 @@
                                 <li><a href="#">ALTERAR</a></li>
                                 <li><a href="#">CONSULTAR</a></li>
                                 <li><a href="#">DELETAR</a></li>
-                                <li style="float:right; border: none; color: red;"><a href="https://github.com/railtonrames/p21_project" target="_blank">GITHUB</a></li>
-                                <li style="float:right; border: none;"><a href="https://www.linkedin.com/in/railton-rames/" target="_blank">LINKEDIN</a></li>
+                                <li class="right"><a href="https://github.com/railtonrames/p21_project" target="_blank">GITHUB</a></li>
+                                <li class="right"><a href="https://www.linkedin.com/in/railton-rames/" target="_blank">LINKEDIN</a></li>
                             </ul>
                         </nav>
                     </header>
                 </div>
 
                 <div id="conteudo">
-                    <table style="width: 100%;">
-                        <tbody>
-                            <tr>
-                                <td><p>Esse projeto faz parte de um desafio da P21, consiste em um CRUD MVC para cadastro de funcionários para uma empresa.</p></td>
-                                <td><img src="imagens/p21_logo.png" alt="logo_p21" height="350px" border="2px solid black" title="P21"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    {{area_dinamica}}
                 </div>
             </div>
         </div>
