@@ -7,102 +7,53 @@
 </head>
 <body>
     <style type="text/css">
-        *{
-            margin: 0; padding: 0;
-        }
-        .botao {
-            -moz-box-shadow: 0px 10px 14px -7px #000000;
-	        -webkit-box-shadow: 0px 10px 14px -7px #000000;
-	        box-shadow: 0px 10px 14px -7px #000000;
-            background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #007dc1), color-stop(1, #0061a7) );
-            background:-moz-linear-gradient( center top, #007dc1 5%, #0061a7 100% );
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#007dc1', endColorstr='#0061a7');
-            background-color:#007dc1;
-            -webkit-border-top-left-radius:3px;
-            -moz-border-radius-topleft:3px;
-            border-top-left-radius:3px;
-            -webkit-border-top-right-radius:3px;
-            -moz-border-radius-topright:3px;
-            border-top-right-radius:3px;
-            -webkit-border-bottom-right-radius:3px;
-            -moz-border-radius-bottomright:3px;
-            border-bottom-right-radius:3px;
-            -webkit-border-bottom-left-radius:3px;
-            -moz-border-radius-bottomleft:3px;
-            border-bottom-left-radius:3px;
-        text-indent:0;
-            border:1px solid #124d77;
-            display:inline-block;
-            color:#ffffff;
-            font-family:Arial;
-            font-size:15px;
-            font-weight:bold;
-            font-style:normal;
-        height:50px;
-            line-height:50px;
-        width:140px;
-            text-decoration:none;
-            text-align:center;
-            text-shadow:0px 1px 0px #154682;
-        }.botao:hover {
-            background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #0061a7), color-stop(1, #007dc1) );
-            background:-moz-linear-gradient( center top, #0061a7 5%, #007dc1 100% );
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7', endColorstr='#007dc1');
-            background-color:#0061a7;
-        }.botao:active {
-            position:relative;
-            top:1px;
-        }
-        body{
-            background-color: rgba(0, 0, 0, .2);
-        }
-        #container{
-            width: 1250px; background-color: #fff; margin: 0 auto;
-            border: 5px solid black;
-        }
-        #menu{
-            padding: 20px 25px; border-bottom: 3px solid black;
-        }
-        #menu a{
-            color: cadetblue; text-decoration: none; font: 35px impact;
-        }
-        #menu a:hover{
-            color: darkblue; text-decoration: none; font: 35px impact;
-        }
-        #conteudo{
-            background-color: rgb(117, 117, 117);padding: 20px 25px;
-        }
-        .container-modal{
-            position: relative;
-            height: 98vh
-        }
-        .modal{
-            color: #000;
-            position: absolute;
-            width: 400px;
-            height: 200px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-150%, -100%);
-        }
+        *{ margin: 0; padding: 0; }
+        body{ background-color: rgba(0, 0, 0, .2); }
+        #container{width: 975px; background-color: #fff; margin: 0 auto; border: 5px solid black; }
+        #menu{ border-bottom: 3px solid black; }
+        #conteudo{ background-color: rgb(150, 150, 150); padding: 20px 25px; }
+        .container-modal{ position: relative; height: 98vh; }
+        .modal{ color: #000; position: absolute; width: 400px; height: 200px; top: 50%; left: 50%; transform: translate(-125%, -115%); }
+        ul { list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #333; }
+        li { float: left; border-right:1px solid rgb(0, 0, 0); }
+        li a { display: block; text-align: center; padding: 14px 32px; text-decoration: none; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: white; }
+        li a:hover:not(.active){ background-color: #111; }
+        .active { background-color: #8CBF43; }
+        p{ font-weight: bold; font-size: 125%; padding-right: 5px; }
     </style>
+
     <div class="container-modal">
         <div class="modal">
             <div id="container">
                 <div id="menu">  
                     <header>
                         <nav>
-                            <a href="#">Inicio</a>
-                            <a href="#">Sobre</a>
+                            <ul>
+                                <li><a class="active" href="#">INICIO</a></li>
+                                <li><a href="#">CADASTRAR</a></li>
+                                <li><a href="#">ALTERAR</a></li>
+                                <li><a href="#">CONSULTAR</a></li>
+                                <li><a href="#">DELETAR</a></li>
+                                <li style="float:right; border: none; color: red;"><a href="https://github.com/railtonrames/p21_project" target="_blank">GITHUB</a></li>
+                                <li style="float:right; border: none;"><a href="https://www.linkedin.com/in/railton-rames/" target="_blank">LINKEDIN</a></li>
+                            </ul>
                         </nav>
                     </header>
                 </div>
 
                 <div id="conteudo">
-                    a
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td><p>Esse projeto faz parte de um desafio da P21, consiste em um CRUD MVC para cadastro de funcionários para uma empresa.</p></td>
+                                <td><img src="imagens/p21_logo.png" alt="logo_p21" height="350px" border="2px solid black" title="P21"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+        
 </body>
 </html>
