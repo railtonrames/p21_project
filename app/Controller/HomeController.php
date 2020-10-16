@@ -2,7 +2,8 @@
 
     class HomeController{
         public function index(){
-            echo 'teste';
+            //echo 'teste';
+            Funcionarios::selecionaTodos();
         }
     }
 ?>
