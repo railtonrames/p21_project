@@ -8,7 +8,11 @@
                     $controller = 'HomeController';
                 }
                 
-                $acao = 'index';
+                if(isset($urlGet['metodo'])){
+                    $acao = $urlGet['metodo'];
+                }else{
+                    $acao = 'index';    
+                }        
 
                 if(!class_exists($controller)){
                     $controller = "ErroController";
