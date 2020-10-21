@@ -26,5 +26,6 @@
                 echo '<script>location.href="?pagina=cadastrar";</script>';
             }
         }
+
     }
 ?>

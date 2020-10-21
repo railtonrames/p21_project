@@ -23,7 +23,7 @@
         }
 
         public static function insert($dadosPost){
-            if(empty($dadosPost['nome']) || empty($dadosPost['cpf']) || empty($dadosPost['dt_nasc']) || empty($dadosPost['sexo']) || empty($dadosPost['naturalidade'])
+            if(empty($dadosPost['cpf']) || empty($dadosPost['dt_nasc']) || empty($dadosPost['sexo']) || empty($dadosPost['naturalidade'])
             || empty($dadosPost['cargo']) ){
                 throw new Exception("Preencha todos os campos.");
                 
@@ -39,12 +39,21 @@
             $sql->bindValue(':car', $dadosPost['cargo']);
             $res = $sql->execute();
 
+            var_dump($dadosPost);
+
             if($res == 0){
                 throw new Exception("Falha ao inserir o funcionário.");
 
-                return false;      
+                return $res;      
             }
-
+            for($i = 1; $i < 10; $i++){
+                if($dadosPost['numero_'.$i] != 0){
+                    $sql = $con-> prepare('INSERT INTO tb_telefone (ID, NUMERO, ID_CPF_FOREIGN_KEY) values (NULL, :num, :for)');
+                    $sql->bindValue(':num', $dadosPost['numero_'.$i]);
+                    $sql->bindValue(':for', $dadosPost['cpf']);
+                    $sql->execute();
+                }
+            }
             return true;
         }
 
