@@ -4,7 +4,10 @@
         public static function selecionaTodos(){
             $con = Conexao::getConn();
 
-            $sql = "SELECT * FROM tb_dados_pessoais ORDER BY NOME ASC";
+            $sql = "SELECT CPF,NOME,DT_NASC,SEXO,NATURALIDADE,CARGO,group_concat(NUMERO) as NRS, ID_FOTO from tb_dados_pessoais
+            LEFT JOIN tb_foto ON tb_dados_pessoais.CPF = tb_foto.ID_CPF_FOREIGN_KEY
+            LEFT JOIN tb_telefone ON tb_dados_pessoais.CPF = tb_telefone.ID_CPF_FOREIGN_KEY 
+            group by tb_dados_pessoais.CPF order by tb_dados_pessoais.NOME;";
             $sql = $con->prepare($sql);
             $sql->execute();
 
@@ -39,7 +42,7 @@
             $sql->bindValue(':car', $dadosPost['cargo']);
             $res = $sql->execute();
 
-            var_dump($dadosPost);
+            //var_dump($dadosPost);
 
             if($res == 0){
                 throw new Exception("Falha ao inserir o funcionário.");
@@ -53,6 +56,21 @@
                     $sql->bindValue(':for', $dadosPost['cpf']);
                     $sql->execute();
                 }
+            }
+
+            if(isset($_FILES['imagem'])){
+
+                $extensao = strtolower(substr($_FILES['imagem']['name'],-4));
+                $novo_nome = md5(time()).$extensao;
+                $diretorio = "app/Img_Funcs/";
+        
+                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$novo_nome);             
+
+                $sql = $con-> prepare('INSERT INTO tb_foto (ID_FOTO, ARQUIVO, DATA, ID_CPF_FOREIGN_KEY) VALUES (NULL, :nome, NOW(), :cpf)');
+                $sql->bindValue(':cpf', $dadosPost['cpf']);
+                $sql->bindValue(':nome', $novo_nome );
+
+                $sql->execute();           
             }
             return true;
         }

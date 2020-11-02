@@ -78,7 +78,7 @@
             .divTableBody {
                 display: table-row-group;
             }
-            #div_telefones{
+            #div_telefones,#div_foto{
                 line-height: 25px;
             }  
         </style>
@@ -92,7 +92,7 @@
             <div class="divTableCell">
                 <h1 style="color: #ffffff;text-shadow: black 0.1em 0.1em 0.2em; font-size: 210%;">Inserir funcionário</h1><br>
 
-                <form id="dados_pessoais" method="POST" action="http://localhost/?pagina=cadastrar&metodo=insert">
+                <form id="dados_pessoais" method="POST" action="http://localhost/?pagina=cadastrar&metodo=insert" enctype="multipart/form-data">
                     <label for="nome">Nome: </label><input type="text" id="nome" name="nome" maxlength="45" style="width: 171px;" required><br>
             
                     <label for="cpf">CPF: </label><input type="text" id="cpf" name="cpf" maxlength="11" style="width: 171px;" required><br>
@@ -149,11 +149,36 @@
                     });
                 </script>
             
-            </form>
             </div>
 
-            <div class="divTableCell">---------------------------------------------</div>
+            <div class="divTableCell" id="div_foto">
+                <input type="file" name="imagem" id="imagem" value="selecionar" onchange="previewImagem()"><br>
+                <label for="imagem" style="font-weight: bold;">Foto: </label><br>
+                <img id="foto" style="width: 225px; height: 225px; border: dashed 2px white;">
+                
+                </form>
 
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                <script>
+                    function previewImagem(){
+                        var imagem = document.querySelector('input[name=imagem]').files[0];
+                        var preview = document.querySelector('img');
+                        var reader = new FileReader();
+                        reader.onloadend = function () {
+                            preview.src = reader.result;
+                        }
+                        if(imagem){
+                            reader.readAsDataURL(imagem);
+                            document.getElementById("foto").style.borderStyle = "solid";
+                            document.getElementById("foto").style.borderColor = "#8CBF43";
+                        }else{
+                            preview.src = "";
+                         }
+                    }
+                </script>
+
+
+            </div>
         </div>
     </div>
 </div>

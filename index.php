@@ -3,7 +3,7 @@
 require_once 'app/Core/Core.php';
 require_once 'app/Controller/HomeController.php';
 require_once 'app/Controller/ErroController.php';
-require_once 'app/Controller/ConsultarController.php';
+require_once 'app/Controller/RudController.php';
 require_once 'app/Controller/CadastrarController.php';
 require_once 'app/Model/Funcionarios.php';
 require_once 'lib/Database/Conexao.php';

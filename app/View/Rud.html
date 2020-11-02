@@ -1,0 +1,80 @@
+<style>
+    .rud { background-color: #8CBF43; }
+    
+    body {
+    font: 75%/1.6 "Myriad Pro", Frutiger, "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Verdana, sans-serif;
+    }
+    table {
+    border-collapse: collapse;
+    width: 50em;
+    border: 1px solid #666;
+    }
+    tr:hover {
+    background-color:#3d3d3d;
+    color: #F15D2D;
+    }
+    thead tr:hover {
+    background-color: transparent;
+    color: inherit;
+    }
+    tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+    th {
+    font-weight: normal;
+    text-align: left;
+    }
+    th, td {
+    padding: 0.1em 1em;
+    border-left: 1px solid black;
+    }
+    
+</style>
+
+<table style="width: 100%; border: 1px solid black;" id="playlistTable">
+    <tbody>
+    <tr style="color: #ffffff; background: #0051ca; font-weight: bold; border: 1px solid black;">
+        <td>CPF</td>
+        <td>Nome</td>
+        <td>Data Nasc.</td>
+        <td>Sexo</td>
+        <td>Naturalidade</td>
+        <td>Cargo</td>
+        <td>Telefone(s)</td>
+        <td>Foto</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    {% for funcionarios in func %}
+    <tr class="dif">
+        <td>{{funcionarios.CPF}}</td>
+        <td>{{funcionarios.NOME}}</td>
+        <td>{{funcionarios.DT_NASC}}</td>
+        <td>{{funcionarios.SEXO}}</td>
+        <td>{{funcionarios.NATURALIDADE}}</td>
+        <td>{{funcionarios.CARGO}}</td>
+        <td>{{funcionarios.NRS}}</td>
+        <td>{{funcionarios.ID_FOTO}}</td>
+        <td><img src="/imagens/update.png" alt="update" title="Alterar" width="25px"></td>
+        <td><img src="/imagens/delete.png" alt="delete" title="Excluir" width="25px"></td>
+    </tr>
+    {% endfor %}
+
+    {% for funcionarios in func %}
+    <tr class="dif">
+        <td>{{funcionarios.CPF}}</td>
+        <td>{{funcionarios.NOME}}</td>
+        <td>{{funcionarios.DT_NASC}}</td>
+        <td>{{funcionarios.SEXO}}</td>
+        <td>{{funcionarios.NATURALIDADE}}</td>
+        <td>{{funcionarios.CARGO}}</td>
+        <td>{{funcionarios.NRS}}</td>
+        <td>{{funcionarios.ID_FOTO}}</td>
+        <td><img src="/imagens/update.png" alt="update" title="Alterar" width="25px"></td>
+        <td><img src="/imagens/delete.png" alt="delete" title="Excluir" width="25px"></td>
+    </tr>
+    {% endfor %}
+    
+    </tbody>
+</table>
