@@ -1,13 +1,11 @@
 <style>
     .rud { background-color: #8CBF43; }
     
-    body {
-    font: 75%/1.6 "Myriad Pro", Frutiger, "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Verdana, sans-serif;
-    }
     table {
     border-collapse: collapse;
     width: 50em;
     border: 1px solid #666;
+    font: 75%/1.6 "Myriad Pro", Frutiger, "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Verdana, sans-serif;
     }
     tr:hover {
     background-color:#3d3d3d;
@@ -56,23 +54,8 @@
         <td>{{funcionarios.CARGO}}</td>
         <td>{{funcionarios.NRS}}</td>
         <td>{{funcionarios.ID_FOTO}}</td>
-        <td><img src="/imagens/update.png" alt="update" title="Alterar" width="25px"></td>
-        <td><img src="/imagens/delete.png" alt="delete" title="Excluir" width="25px"></td>
-    </tr>
-    {% endfor %}
-
-    {% for funcionarios in func %}
-    <tr class="dif">
-        <td>{{funcionarios.CPF}}</td>
-        <td>{{funcionarios.NOME}}</td>
-        <td>{{funcionarios.DT_NASC}}</td>
-        <td>{{funcionarios.SEXO}}</td>
-        <td>{{funcionarios.NATURALIDADE}}</td>
-        <td>{{funcionarios.CARGO}}</td>
-        <td>{{funcionarios.NRS}}</td>
-        <td>{{funcionarios.ID_FOTO}}</td>
-        <td><img src="/imagens/update.png" alt="update" title="Alterar" width="25px"></td>
-        <td><img src="/imagens/delete.png" alt="delete" title="Excluir" width="25px"></td>
+        <td><a href="?pagina=rud&metodo=update&id={{funcionarios.CPF}}"><img src="/imagens/update.png" alt="update" title="Alterar" width="25px"></a></td>
+        <td><a href="?pagina=rud&metodo=delete&id={{funcionarios.CPF}}"><img src="/imagens/delete.png" alt="delete" title="Excluir" width="25px"></a></td>
     </tr>
     {% endfor %}
     

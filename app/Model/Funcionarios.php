@@ -75,5 +75,60 @@
             return true;
         }
 
+        public static function selecionaPorId($idFunc){
+            $con = Conexao::getConn();
+
+            $sql = "SELECT * FROM tb_dados_pessoais WHERE CPF = :cpf";
+            /*$sql = "SELECT CPF,NOME,DT_NASC,SEXO,NATURALIDADE,CARGO,group_concat(NUMERO) as NRS, ID_FOTO from tb_dados_pessoais
+            LEFT JOIN tb_foto ON tb_dados_pessoais.CPF = tb_foto.ID_CPF_FOREIGN_KEY
+            LEFT JOIN tb_telefone ON tb_dados_pessoais.CPF = tb_telefone.ID_CPF_FOREIGN_KEY 
+            WHERE CPF = :cpf
+            group by tb_dados_pessoais.CPF;";*/
+            $sql = $con->prepare($sql);
+            $sql->bindValue(':cpf', $idFunc, PDO::PARAM_STR);
+            $sql->execute();
+
+            $resultado = $sql->fetchObject('Funcionarios');
+
+            if (!$resultado) {
+				throw new Exception("Não foi encontrado nenhum registro.");	
+			}else{
+                return $resultado;
+            }  
+        }
+
+        public static function buscaTelefone($idFunc){
+            $con = Conexao::getConn();
+            $nrs = array();
+
+            $sql = "SELECT * FROM tb_telefone WHERE ID_CPF_FOREIGN_KEY = :cpf";
+            $sql = $con->prepare($sql);
+            $sql->bindValue(':cpf', $idFunc, PDO::PARAM_STR);
+            $sql->execute();
+
+            $count = $sql->rowCount();
+            
+            for($i = 0; $i < $count; $i++){
+                $sql = "SELECT NUMERO FROM tb_telefone WHERE ID_CPF_FOREIGN_KEY = :cpf order by ID LIMIT 1 OFFSET $i;";
+                $sql = $con->prepare($sql);
+                $sql->bindValue(':cpf', $idFunc, PDO::PARAM_STR);
+                $sql->execute();
+                $nrs[$i] = $sql->fetchObject('Funcionarios');    
+            }
+            return $nrs;    
+        }
+
+        public static function buscaFoto($idFunc){
+            $con = Conexao::getConn();
+
+            $sql = "SELECT * FROM tb_foto WHERE ID_CPF_FOREIGN_KEY = :cpf";
+            $sql = $con->prepare($sql);
+            $sql->bindValue(':cpf', $idFunc, PDO::PARAM_STR);
+            $sql->execute();
+
+            $resultado = $sql->fetchObject('Funcionarios');
+            return $resultado;
+        }
+
     }
 ?>
