@@ -127,6 +127,7 @@
             $sql->execute();
 
             $resultado = $sql->fetchObject('Funcionarios');
+            
             return $resultado;
         }
 

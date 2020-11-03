@@ -54,8 +54,13 @@
 
             //Insere Foto
             $func3 = Funcionarios::buscaFoto($paramId);
-            $parametros['FOTO'] = $func3->ARQUIVO;
-            //var_dump($func3);
+            if($func3){
+                $parametros['FOTO'] = $func3->ARQUIVO;
+                //var_dump($func3);
+            } else {
+                $parametros['FOTO'] = "Sem_Foto.jpg";
+            }
+           
 
 
             $conteudo = $template->render($parametros);

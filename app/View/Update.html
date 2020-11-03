@@ -129,6 +129,8 @@
                 <label for="numero_1" style="font-weight: bold;">Telefone: </label><input type="tel" id="numero_1" name="numero_1" style="width: 128px;" value="{{TEL0}}" required>
                 <input type="button" name="add" id="add" value="+" style="width: 25px; border: solid 1px black;"/><br>
 
+                
+
                 <span id="n2" style="display: none;">
                     <label for="numero_2" style="font-weight: bold;">Telefone (2): </label><input type="tel" id="numero_2" name="numero_2" style="width: 134px;" value="{{TEL1}}" ></span>
                 <span id="n3" style="display: none;">
@@ -158,6 +160,21 @@
                                 alert('Número máximo de telefones atingido !');
                             }
                         })
+                    });
+                </script>
+
+                <script type="text/javascript">
+                    var i = 1;
+                    $(document).ready(function () {
+                        var btn_add = document.getElementsByTagName("add");
+                        if("{{TEL1}}" > 0){ document.getElementById('add').click(); }
+                        if("{{TEL2}}" > 0){ document.getElementById('add').click(); }
+                        if("{{TEL3}}" > 0){ document.getElementById('add').click(); }
+                        if("{{TEL4}}" > 0){ document.getElementById('add').click(); }
+                        if("{{TEL5}}" > 0){ document.getElementById('add').click(); }
+                        if("{{TEL6}}" > 0){ document.getElementById('add').click(); }
+                        if("{{TEL7}}" > 0){ document.getElementById('add').click(); }
+                        if("{{TEL8}}" > 0){ document.getElementById('add').click(); }
                     });
                 </script>
             
