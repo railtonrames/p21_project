@@ -24,11 +24,10 @@
             
         }
 
-        public function update($paramId){
+        public function change($paramId){
             $loader = new \Twig\Loader\FilesystemLoader('app/View');
             $twig = new \Twig\Environment($loader);
             $template = $twig->load('update.html');
-
             //echo $paramId;
 
             //Insere Dados Pessoais
@@ -47,9 +46,10 @@
             //var_dump($func2);
             $total = count($func2);
             for($i = 0; $i < $total; $i++){
-                $contador = (string)"TEL".$i;
-                //echo($contador);
-                $parametros[$contador] = $func2[$i]->NUMERO;
+                $concat_tel = (string)"TEL".$i;
+                $concat_id = (string)"ID".$i;
+                $parametros[$concat_tel] = $func2[$i]->NUMERO;
+                $parametros[$concat_id] = $func2[$i]->ID;
             }
 
             //Insere Foto
@@ -61,10 +61,20 @@
                 $parametros['FOTO'] = "Sem_Foto.jpg";
             }
            
-
-
             $conteudo = $template->render($parametros);
             echo $conteudo;
+        }
+
+        public function update(){
+        try {
+            Funcionarios::update($_POST);
+            echo '<script>alert("Dado(s) alterados com sucesso !");</script>';
+            echo '<script>location.href="?pagina=rud"</script>';
+        } catch (Exception $e) {
+            echo '<script>alert("'.$e->getMessage().'");</script>';
+            //echo '<script>location.href="?pagina=rud&metodo=change&id='.$_POST[CPF].'"</script>';
+        }
+            
         }
     }
 ?>

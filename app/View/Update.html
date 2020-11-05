@@ -94,12 +94,12 @@
             <div class="divTableCell">
                 <h1 style="color: #ffffff;text-shadow: black 0.1em 0.1em 0.2em; font-size: 210%;">Alterar funcionário</h1><br>
 
-                <form id="dados_pessoais" method="POST" action="http://localhost/?pagina=cadastrar&metodo=insert" enctype="multipart/form-data">
-                    <label for="nome">Nome: </label><input type="text" id="nome" name="nome" maxlength="45" style="width: 171px;" value="{{NOME}}" required ><br>
+                <form id="dados_pessoais" method="POST" action="http://localhost/?pagina=rud&metodo=update" enctype="multipart/form-data">
+                    <label for="nome">Nome: </label><input type="text" id="nome" name="NOME" maxlength="45" style="width: 171px;" value="{{NOME}}" required ><br>
             
-                    <label for="cpf">CPF: </label><input type="text" id="cpf" name="cpf" maxlength="11" style="width: 171px;" value="{{CPF}}" required><br>
+                    <label for="cpf">CPF: </label><input type="text" id="cpf" name="CPF" maxlength="11" style="width: 171px; color: rgb(153, 153, 153);" value="{{CPF}}" readonly required><br>
             
-                    <label for="dt_nasc">Data de Nascimento:</label><input type="date" id="dt_nasc" name="dt_nasc" style="width: 171px;" value="{{DT_NASC}}" required><br>
+                    <label for="dt_nasc">Data de Nascimento:</label><input type="date" id="dt_nasc" name="DT_NASC" style="width: 171px;" value="{{DT_NASC}}" required><br>
                     
                     <script type="text/javascript">
                         $(document).ready(function () {
@@ -113,12 +113,12 @@
                     </script>
                                                  
                     <label>Sexo:</label>
-                    <span for="mas">Masculino</span>&nbsp;<input id="mas" type="radio" name="sexo" value="m" required>&nbsp;
-                    <span for="fem">Feminino</span>&nbsp;<input id="fem" type="radio" name="sexo" value="f" required><br>
+                    <span for="mas">Masculino</span>&nbsp;<input id="mas" type="radio" name="SEXO" value="m" required>&nbsp;
+                    <span for="fem">Feminino</span>&nbsp;<input id="fem" type="radio" name="SEXO" value="f" required><br>
             
-                    <label for="nat">Naturalidade:</label><input type="text" id="nat" name="naturalidade" maxlength="20" style="width: 171px;" value="{{NATURALIDADE}}" required><br>
+                    <label for="nat">Naturalidade:</label><input type="text" id="nat" name="NATURALIDADE" maxlength="20" style="width: 171px;" value="{{NATURALIDADE}}" required><br>
             
-                    <label for="cargo">Cargo:</label><input type="text" id="cargo" name="cargo" maxlength="45" style="width: 171px;" value="{{CARGO}}" required><br><br>
+                    <label for="cargo">Cargo:</label><input type="text" id="cargo" name="CARGO" maxlength="45" style="width: 171px;" value="{{CARGO}}" required><br><br>
 
                     <input type="submit" value="Alterar" class="botao">
             
@@ -126,11 +126,22 @@
 
             <div class="divTableCell" id="div_telefones">
 
-                <label for="numero_1" style="font-weight: bold;">Telefone: </label><input type="tel" id="numero_1" name="numero_1" style="width: 128px;" value="{{TEL0}}" required>
-                <input type="button" name="add" id="add" value="+" style="width: 25px; border: solid 1px black;"/><br>
-
                 
+                <!--ID DOS NÚMEROS-->
+                <input type="text" name="id_1" value="{{ID0}}" style="display: none;" readonly>
+                <input type="text" name="id_2" value="{{ID1}}" style="display: none;" readonly>
+                <input type="text" name="id_3" value="{{ID2}}" style="display: none;" readonly>
+                <input type="text" name="id_4" value="{{ID3}}" style="display: none;" readonly>
+                <input type="text" name="id_5" value="{{ID4}}" style="display: none;" readonly>
+                <input type="text" name="id_6" value="{{ID5}}" style="display: none;" readonly>
+                <input type="text" name="id_7" value="{{ID6}}" style="display: none;" readonly>
+                <input type="text" name="id_8" value="{{ID7}}" style="display: none;" readonly>
+                <input type="text" name="id_9" value="{{ID8}}" style="display: none;" readonly> 
 
+                <label for="numero_1" style="font-weight: bold;">Telefone: </label><input type="tel" id="numero_1" name="numero_1" style="width: 128px;" value="{{TEL0}}" required>
+
+                <input type="button" name="add" id="add" value="+" style="width: 25px; border: solid 1px black;"/><br>
+                
                 <span id="n2" style="display: none;">
                     <label for="numero_2" style="font-weight: bold;">Telefone (2): </label><input type="tel" id="numero_2" name="numero_2" style="width: 134px;" value="{{TEL1}}" ></span>
                 <span id="n3" style="display: none;">
