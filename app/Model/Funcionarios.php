@@ -4,7 +4,7 @@
         public static function selecionaTodos(){
             $con = Conexao::getConn();
 
-            $sql = "SELECT CPF,NOME,DT_NASC,SEXO,NATURALIDADE,CARGO,group_concat(NUMERO) as NRS, ID_FOTO from tb_dados_pessoais
+            $sql = "SELECT CPF,NOME,DT_NASC,SEXO,NATURALIDADE,CARGO,group_concat(NUMERO,' ') as NRS, ID_FOTO from tb_dados_pessoais
             LEFT JOIN tb_foto ON tb_dados_pessoais.CPF = tb_foto.ID_CPF_FOREIGN_KEY
             LEFT JOIN tb_telefone ON tb_dados_pessoais.CPF = tb_telefone.ID_CPF_FOREIGN_KEY 
             group by tb_dados_pessoais.CPF order by tb_dados_pessoais.NOME;";
@@ -50,7 +50,7 @@
                 return $res;      
             }
             for($i = 1; $i < 10; $i++){
-                if($dadosPost['numero_'.$i] != 0){
+                if($dadosPost['numero_'.$i] != ""){
                     $sql = $con-> prepare('INSERT INTO tb_telefone (ID, NUMERO, ID_CPF_FOREIGN_KEY) values (NULL, :num, :for)');
                     $sql->bindValue(':num', $dadosPost['numero_'.$i]);
                     $sql->bindValue(':for', $dadosPost['cpf']);
@@ -58,7 +58,7 @@
                 }
             }
 
-            if(isset($_FILES['imagem'])){
+            if(isset($_FILES['imagem']) && $_FILES['imagem']['tmp_name'] != ""){
 
                 $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
                 $novo_nome = md5(uniqid($_FILES['imagem']['name'])).".".$extensao;
@@ -145,12 +145,12 @@
             $resultado = $sql->execute();
 
             for($i = 1; $i < 10; $i++){
-                if($params['numero_'.$i] != 0 && $params['id_'.$i] !=0){
+                if($params['numero_'.$i] != "" && $params['id_'.$i] !=0){
                     $sql = $con-> prepare('UPDATE tb_telefone SET NUMERO = :num WHERE ID = :id');
                     $sql->bindValue(':num', $params['numero_'.$i]);
                     $sql->bindValue(':id', $params['id_'.$i]);
                     $resultado2 = $sql->execute();
-                } else if($params['numero_'.$i] != 0) {
+                } else if($params['numero_'.$i] != "") {
                     $sql = $con-> prepare('INSERT INTO tb_telefone (ID, NUMERO, ID_CPF_FOREIGN_KEY) values (NULL, :num, :for)');
                     $sql->bindValue(':num', $params['numero_'.$i]);
                     $sql->bindValue(':for', $params['CPF']);
@@ -218,7 +218,9 @@
 
         public static function delete($id){
             $busca_ft = Funcionarios::buscaFoto($id);
-            unlink("app/Img_Funcs/".$busca_ft->ARQUIVO);
+            if($busca_ft){
+                unlink("app/Img_Funcs/".$busca_ft->ARQUIVO);
+            }
 
             $con = Conexao::getConn();
 

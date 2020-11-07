@@ -95,7 +95,7 @@
                 <form id="dados_pessoais" method="POST" action="http://localhost/?pagina=cadastrar&metodo=insert" enctype="multipart/form-data">
                     <label for="nome">Nome: </label><input type="text" id="nome" name="nome" maxlength="45" style="width: 171px;" required><br>
             
-                    <label for="cpf">CPF: </label><input type="text" id="cpf" name="cpf" maxlength="11" style="width: 171px;" required><br>
+                    <label for="cpf">CPF: </label><input type="text" id="cpf" name="cpf" maxlength="11" style="width: 171px;" placeholder="___.___.___-__" data-mask="000.000.000-00" required><br>
             
                     <label for="dt_nasc">Data de Nascimento:</label><input type="date" id="dt_nasc" name="dt_nasc" style="width: 171px;" required><br>
             
@@ -113,25 +113,36 @@
 
             <div class="divTableCell" id="div_telefones">
 
-                <label for="numero_1" style="font-weight: bold;">Telefone: </label><input type="tel" id="numero_1" name="numero_1" style="width: 128px;" required>
-                <input type="button" name="add" id="add" value="+" style="width: 25px; border: solid 1px black;"/><br>
+                <label for="numero_1" style="font-weight: bold;">Telefone: </label><input type="tel" id="numero_1" name="numero_1" style="width: 128px;"
+                placeholder="(  ) _____-____" data-mask="(00) 00000-0000" required>
+                <input type="button" name="add" id="add" value="+" style="width: 25px; border: solid 1px black; background: #8CBF43; color: #fff;"/>
+                <input type="button" name="rem" id="rem" value="-" style="width: 25px; border: solid 1px black; background: red; color: #fff;"/>
+                <br>
 
                 <span id="n2" style="display: none;">
-                    <label for="numero_2" style="font-weight: bold;">Telefone (2): </label><input type="tel" id="numero_2" name="numero_2" style="width: 134px;"></span>
+                    <label for="numero_2" style="font-weight: bold;">Telefone (2): </label><input type="tel" id="numero_2" name="numero_2" style="width: 134px;"
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n3" style="display: none;">
-                    <label for="numero_3" style="font-weight: bold;">Telefone (3): </label><input type="tel" id="numero_3" name="numero_3" style="width: 134px;"></span>
+                    <label for="numero_3" style="font-weight: bold;">Telefone (3): </label><input type="tel" id="numero_3" name="numero_3" style="width: 134px;" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n4" style="display: none;">
-                    <label for="numero_4" style="font-weight: bold;">Telefone (4): </label><input type="tel" id="numero_4" name="numero_4" style="width: 134px;"></span>
+                    <label for="numero_4" style="font-weight: bold;">Telefone (4): </label><input type="tel" id="numero_4" name="numero_4" style="width: 134px;"
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n5" style="display: none;">
-                    <label for="numero_5" style="font-weight: bold;">Telefone (5): </label><input type="tel" id="numero_5" name="numero_5" style="width: 134px;"></span>
+                    <label for="numero_5" style="font-weight: bold;">Telefone (5): </label><input type="tel" id="numero_5" name="numero_5" style="width: 134px;"
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n6" style="display: none;">
-                    <label for="numero_6" style="font-weight: bold;">Telefone (6): </label><input type="tel" id="numero_6" name="numero_6" style="width: 134px;"></span>
+                    <label for="numero_6" style="font-weight: bold;">Telefone (6): </label><input type="tel" id="numero_6" name="numero_6" style="width: 134px;"
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n7" style="display: none;">
-                    <label for="numero_7" style="font-weight: bold;">Telefone (7): </label><input type="tel" id="numero_7" name="numero_7" style="width: 134px;"></span>
+                    <label for="numero_7" style="font-weight: bold;">Telefone (7): </label><input type="tel" id="numero_7" name="numero_7" style="width: 134px;"
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n8" style="display: none;">
-                    <label for="numero_8" style="font-weight: bold;">Telefone (8): </label><input type="tel" id="numero_8" name="numero_8" style="width: 134px;"></span>
+                    <label for="numero_8" style="font-weight: bold;">Telefone (8): </label><input type="tel" id="numero_8" name="numero_8" style="width: 134px;"
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n9" style="display: none;">
-                    <label for="numero_9" style="font-weight: bold;">Telefone (9): </label><input type="tel" id="numero_9" name="numero_9" style="width: 134px;"></span>            
+                    <label for="numero_9" style="font-weight: bold;">Telefone (9): </label><input type="tel" id="numero_9" name="numero_9" style="width: 134px;"
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>            
 
                 <script type="text/javascript" src="/app/Js/jquery-3.5.1.js"></script>
                 <script type="text/javascript">
@@ -146,11 +157,21 @@
                                 alert('Número máximo de telefones atingido !');
                             }
                         })
+                        $('#rem').click(function () {
+                            if(i > 1){
+                                document.getElementById('n'+i).style.display='none';
+                                $("#numero_"+i).val("");
+                                i--;
+                            }
+                            else{
+                                alert('Número mínimo de telefones atingido !');
+                            }
+                        })
                     });
                 </script>
-            
+                
             </div>
-
+            
             <div class="divTableCell" id="div_foto">
                 <input type="file" name="imagem" id="imagem" value="selecionar" onchange="previewImagem()"><br>
                 <label for="imagem" style="font-weight: bold;">Foto: </label><br>
@@ -176,8 +197,7 @@
                          }
                     }
                 </script>
-
-
+                <script type="text/javascript" src="/app/Js/jquery-mask.js"></script>
             </div>
         </div>
     </div>

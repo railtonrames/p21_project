@@ -55,9 +55,10 @@
         <td>{{funcionarios.NRS}}</td>
         <td>{{funcionarios.ID_FOTO}}</td>
         <td><a href="?pagina=rud&metodo=change&id={{funcionarios.CPF}}"><img src="/imagens/update.png" alt="update" title="Alterar" width="25px"></a></td>
-        <td><a href="?pagina=rud&metodo=delete&id={{funcionarios.CPF}}"><img src="/imagens/delete.png" alt="delete" title="Excluir" width="25px"></a></td>
+        <td><a href="?pagina=rud&metodo=delete&id={{funcionarios.CPF}}" onclick="return confirm('O usuário selecionado será excluído !')">
+            <img src="/imagens/delete.png" alt="delete" title="Excluir" width="25px"></a></td>
     </tr>
     {% endfor %}
-    
+
     </tbody>
 </table>

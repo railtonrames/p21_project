@@ -138,29 +138,37 @@
                 <input type="text" name="id_8" value="{{ID7}}" style="display: none;" readonly>
                 <input type="text" name="id_9" value="{{ID8}}" style="display: none;" readonly> 
 
-                <label for="numero_1" style="font-weight: bold;">Telefone: </label><input type="tel" id="numero_1" name="numero_1" style="width: 128px;" value="{{TEL0}}" required>
+                <label for="numero_1" style="font-weight: bold;">Telefone: </label><input type="tel" id="numero_1" name="numero_1" style="width: 128px;" value="{{TEL0}}" 
+                placeholder="(  ) _____-____" data-mask="(00) 00000-0000"  required>
 
                 <input type="button" name="add" id="add" value="+" style="width: 25px; border: solid 1px black; background: #8CBF43; color: #fff;"/>
                 <input type="button" name="rem" id="rem" value="-" style="width: 25px; border: solid 1px black; background: red; color: #fff;"/>
                 <br>
                 
                 <span id="n2" style="display: none;">
-                    <label for="numero_2" style="font-weight: bold;">Telefone (2): </label><input type="tel" id="numero_2" name="numero_2" style="width: 164px;" value="{{TEL1}}"
-                     data-mask="(00) 0000-0000" data-mask-selectonfocus="true"></span>
+                    <label for="numero_2" style="font-weight: bold;">Telefone (2): </label><input type="tel" id="numero_2" name="numero_2" style="width: 164px;" value="{{TEL1}}" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n3" style="display: none;">
-                    <label for="numero_3" style="font-weight: bold;">Telefone (3): </label><input type="tel" id="numero_3" name="numero_3" style="width: 164px;" value="{{TEL2}}"></span>
+                    <label for="numero_3" style="font-weight: bold;">Telefone (3): </label><input type="tel" id="numero_3" name="numero_3" style="width: 164px;" value="{{TEL2}}" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n4" style="display: none;">
-                    <label for="numero_4" style="font-weight: bold;">Telefone (4): </label><input type="tel" id="numero_4" name="numero_4" style="width: 164px;" value="{{TEL3}}"></span>
+                    <label for="numero_4" style="font-weight: bold;">Telefone (4): </label><input type="tel" id="numero_4" name="numero_4" style="width: 164px;" value="{{TEL3}}" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n5" style="display: none;">
-                    <label for="numero_5" style="font-weight: bold;">Telefone (5): </label><input type="tel" id="numero_5" name="numero_5" style="width: 164px;" value="{{TEL4}}"></span>
+                    <label for="numero_5" style="font-weight: bold;">Telefone (5): </label><input type="tel" id="numero_5" name="numero_5" style="width: 164px;" value="{{TEL4}}" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n6" style="display: none;">
-                    <label for="numero_6" style="font-weight: bold;">Telefone (6): </label><input type="tel" id="numero_6" name="numero_6" style="width: 164px;" value="{{TEL5}}"></span>
+                    <label for="numero_6" style="font-weight: bold;">Telefone (6): </label><input type="tel" id="numero_6" name="numero_6" style="width: 164px;" value="{{TEL5}}" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n7" style="display: none;">
-                    <label for="numero_7" style="font-weight: bold;">Telefone (7): </label><input type="tel" id="numero_7" name="numero_7" style="width: 164px;" value="{{TEL6}}"></span>
+                    <label for="numero_7" style="font-weight: bold;">Telefone (7): </label><input type="tel" id="numero_7" name="numero_7" style="width: 164px;" value="{{TEL6}}" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n8" style="display: none;">
-                    <label for="numero_8" style="font-weight: bold;">Telefone (8): </label><input type="tel" id="numero_8" name="numero_8" style="width: 164px;" value="{{TEL7}}"></span>
+                    <label for="numero_8" style="font-weight: bold;">Telefone (8): </label><input type="tel" id="numero_8" name="numero_8" style="width: 164px;" value="{{TEL7}}" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>
                 <span id="n9" style="display: none;">
-                    <label for="numero_9" style="font-weight: bold;">Telefone (9): </label><input type="tel" id="numero_9" name="numero_9" style="width: 164px;" value="{{TEL8}}"></span>            
+                    <label for="numero_9" style="font-weight: bold;">Telefone (9): </label><input type="tel" id="numero_9" name="numero_9" style="width: 164px;" value="{{TEL8}}" 
+                    placeholder="(  ) _____-____" data-mask="(00) 00000-0000"></span>            
 
                 <script type="text/javascript">
                     var i = 1;
@@ -174,12 +182,10 @@
                                 alert('Número máximo de telefones atingido !');
                             }
                         })
-                    });
-                    $(document).ready(function () {
                         $('#rem').click(function () {
                             if(i > 1){
                                 document.getElementById('n'+i).style.display='none';
-                                $("#numero_"+i).val("Deletado");
+                                $("#numero_"+i).val("");
                                 i--;
                             }
                             else{
@@ -193,14 +199,14 @@
                     var i = 1;
                     $(document).ready(function () {
                         var btn_add = document.getElementsByTagName("add");
-                        if("{{TEL1}}" > 0){ document.getElementById('add').click(); }
-                        if("{{TEL2}}" > 0){ document.getElementById('add').click(); }
-                        if("{{TEL3}}" > 0){ document.getElementById('add').click(); }
-                        if("{{TEL4}}" > 0){ document.getElementById('add').click(); }
-                        if("{{TEL5}}" > 0){ document.getElementById('add').click(); }
-                        if("{{TEL6}}" > 0){ document.getElementById('add').click(); }
-                        if("{{TEL7}}" > 0){ document.getElementById('add').click(); }
-                        if("{{TEL8}}" > 0){ document.getElementById('add').click(); }
+                        if("{{TEL1}}" != ""){ document.getElementById('add').click(); }
+                        if("{{TEL2}}" != ""){ document.getElementById('add').click(); }
+                        if("{{TEL3}}" != ""){ document.getElementById('add').click(); }
+                        if("{{TEL4}}" != ""){ document.getElementById('add').click(); }
+                        if("{{TEL5}}" != ""){ document.getElementById('add').click(); }
+                        if("{{TEL6}}" != ""){ document.getElementById('add').click(); }
+                        if("{{TEL7}}" != ""){ document.getElementById('add').click(); }
+                        if("{{TEL8}}" != ""){ document.getElementById('add').click(); }
                     });
                 </script>
             
@@ -230,8 +236,7 @@
                          }
                     }
                 </script>
-
-
+                <script type="text/javascript" src="/app/Js/jquery-mask.js"></script>
             </div>
         </div>
     </div>
