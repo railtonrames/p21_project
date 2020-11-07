@@ -16,5 +16,15 @@
   - CSS
   - MySql
 
-###Página Inicial
- ![Página Inicial - p21_project](https://github.com/railtonrames/p21_project/blob/master/app/Img_Funcs/13a8edfbb4841adb7aa720feb726d1d9.png "Página Inicial - p21_project")<br>
+# Visualização do Projeto
+## Página Inicial
+<br>![Página Inicial - p21_project](https://github.com/railtonrames/p21_project/blob/master/imagens/Imgs_README/pg_index.PNG "Página Index - p21_project")<br>
+## Página Cadastro
+<br>![Página Cadastro - p21_project](https://github.com/railtonrames/p21_project/blob/master/imagens/Imgs_README/pg_cadastrar.PNG "Página Cadastro - p21_project")<br>
+## Página Crud/Admin
+<br>![Página Crud/Admin - p21_project](https://github.com/railtonrames/p21_project/blob/master/imagens/Imgs_README/pg_crud.PNG "Página Crud/Admin - p21_project")<br>
+## Página Update
+<br>![Página Update - p21_project](https://github.com/railtonrames/p21_project/blob/master/imagens/Imgs_README/pg_update.PNG "Página Update - p21_project")<br>
+
+# Modelo do Banco de Dados (ERR)
+<br>![Modelo ERR - p21_project](https://github.com/railtonrames/p21_project/blob/master/imagens/Imgs_README/modelo_bd.PNG "Modelo EER - p21_project")<br>
