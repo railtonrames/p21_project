@@ -27,4 +27,4 @@
 
 # Modelo do Banco de Dados (ERR)
 <br>![Modelo ERR - p21_project](https://github.com/railtonrames/p21_project/blob/master/imagens/Imgs_README/modelo_bd.PNG "Modelo EER - p21_project")<br>
-#### Railton Ramés Sousa `<LinkedIn>` : <https://www.linkedin.com/in/railton-rames/> `<GitHub>` : <https://github.com/railtonrames/p21_project>
+#### Railton Ramés Sousa | `<LinkedIn>` : <https://www.linkedin.com/in/railton-rames/> `<GitHub>` : <https://github.com/railtonrames/p21_project>
