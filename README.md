@@ -1,7 +1,6 @@
 # Projeto P21
 
-- Esse projeto faz parte de um desafio da P21, consiste em um CRUD MVC para cadastro de funcionários para uma empresa.
-- O projeto foi feito utilizando o modelo MVC, e consiste em um CRUD completo e possui interação com 3 tabelas do banco de dados.
+- Esse projeto faz parte de um desafio da P21, consiste em um CRUD MVC para cadastro de funcionários para uma empresa. O projeto foi feito utilizando o modelo MVC, e consiste em um CRUD completo e possui interação com 3 tabelas do banco de dados. Funcionalidades como adição/remoção dinâmica de telefones, máscaras de campos em formulários, preview de imagens no formulário e dentro outras estão presente no projeto. 
 - Foram utilizadas as seguintes ferramentas e bibliotecas:
   - Composer
   - Twig
@@ -28,3 +27,4 @@
 
 # Modelo do Banco de Dados (ERR)
 <br>![Modelo ERR - p21_project](https://github.com/railtonrames/p21_project/blob/master/imagens/Imgs_README/modelo_bd.PNG "Modelo EER - p21_project")<br>
+Railton Ramés Sousa
