@@ -70,7 +70,7 @@
             Funcionarios::update($_POST);
             echo '<script>alert("Dado(s) alterados com sucesso !");</script>';
             echo '<script>location.href="?pagina=rud"</script>';
-            var_dump($_POST);
+            //var_dump($_POST);
         } catch (Exception $e) {
             echo '<script>alert("'.$e->getMessage().'");</script>';
             echo '<script>location.href="?pagina=rud&metodo=change&id='.$_POST[CPF].'"</script>';

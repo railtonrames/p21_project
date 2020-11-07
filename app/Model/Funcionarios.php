@@ -189,23 +189,11 @@
                     $sql->bindValue(':cpf', $params['CPF']);
                     $sql->bindValue(':nome', $novo_nome );
 
-                    $sql->execute(); 
+                    $resultado3 = $sql->execute(); 
                 }
-                
-                         
-            } /*else {
-                $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
-                $novo_nome = md5(uniqid($_FILES['imagem']['name'])).".".$extensao;
-                $diretorio = "app/Img_Funcs/";
-        
-                move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$novo_nome);             
-
-                $sql = $con-> prepare('INSERT INTO tb_foto (ID_FOTO, ARQUIVO, DATA, ID_CPF_FOREIGN_KEY) VALUES (NULL, :nome, NOW(), :cpf)');
-                $sql->bindValue(':cpf', $dadosPost['CPF']);
-                $sql->bindValue(':nome', $novo_nome );
-
-                $resultado3 = $sql->execute();
-            }*/
+                       
+            }
+            
             $resultado3 = 1; 
 
             if($resultado == 0 || $resultado2 == 0 || $resultado3 == 0){
