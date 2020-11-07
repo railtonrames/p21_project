@@ -72,9 +72,20 @@
             echo '<script>location.href="?pagina=rud"</script>';
         } catch (Exception $e) {
             echo '<script>alert("'.$e->getMessage().'");</script>';
-            //echo '<script>location.href="?pagina=rud&metodo=change&id='.$_POST[CPF].'"</script>';
+            echo '<script>location.href="?pagina=rud&metodo=change&id='.$_POST[CPF].'"</script>';
+        }   
         }
-            
+
+        public function delete($paramId){   
+            try {
+                //$id = $_GET['id'];
+                Funcionarios::delete($paramId);
+                echo '<script>alert("Usuário deletado com sucesso !");</script>';
+                echo '<script>location.href="?pagina=rud"</script>';
+            } catch (Exception $e) {
+                echo '<script>alert("'.$e->getMessage().'");</script>';
+                echo '<script>location.href="?pagina=rud&metodo=change&id='.$_POST[CPF].'"</script>';
+            }
         }
     }
 ?>

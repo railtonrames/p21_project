@@ -155,31 +155,79 @@
                     $sql->bindValue(':num', $params['numero_'.$i]);
                     $sql->bindValue(':for', $params['CPF']);
                     $resultado2 = $sql->execute();
+                } else {
+                    $sql = $con-> prepare('DELETE FROM tb_telefone WHERE ID = :id');
+                    $sql->bindValue(':id', $params['id_'.$i]);
+                    $resultado2 = $sql->execute();
                 }
             }
 
             if(isset($_FILES['imagem']) && $_FILES['imagem']['tmp_name'] != ""){
                 $busca_ft = Funcionarios::buscaFoto($params['CPF']);
+                if($busca_ft){
+                    unlink("app/Img_Funcs/".$busca_ft->ARQUIVO);
 
-                unlink("app/Img_Funcs/".$busca_ft->ARQUIVO);
+                    $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+                    $novo_nome = md5(uniqid($_FILES['imagem']['name'])).".".$extensao;
+                    $diretorio = "app/Img_Funcs/";
+            
+                    move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$novo_nome);             
 
+                    $sql = "UPDATE tb_foto SET ARQUIVO = :nome, DATA = NOW() WHERE ID_CPF_FOREIGN_KEY = :cpf";
+                    $sql = $con->prepare($sql);
+                    $sql->bindValue(':cpf', $params['CPF']);
+                    $sql->bindValue(':nome', $novo_nome );
+                    $resultado3 = $sql->execute(); 
+                } else {
+                    $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
+                    $novo_nome = md5(uniqid($_FILES['imagem']['name'])).".".$extensao;
+                    $diretorio = "app/Img_Funcs/";
+            
+                    move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$novo_nome);             
+
+                    $sql = $con-> prepare('INSERT INTO tb_foto (ID_FOTO, ARQUIVO, DATA, ID_CPF_FOREIGN_KEY) VALUES (NULL, :nome, NOW(), :cpf)');
+                    $sql->bindValue(':cpf', $params['CPF']);
+                    $sql->bindValue(':nome', $novo_nome );
+
+                    $sql->execute(); 
+                }
+                
+                         
+            } /*else {
                 $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
                 $novo_nome = md5(uniqid($_FILES['imagem']['name'])).".".$extensao;
                 $diretorio = "app/Img_Funcs/";
         
                 move_uploaded_file($_FILES['imagem']['tmp_name'], $diretorio.$novo_nome);             
 
-                $sql = "UPDATE tb_foto SET ARQUIVO = :nome, DATA = NOW() WHERE ID_CPF_FOREIGN_KEY = :cpf";
-                $sql = $con->prepare($sql);
-                $sql->bindValue(':cpf', $params['CPF']);
+                $sql = $con-> prepare('INSERT INTO tb_foto (ID_FOTO, ARQUIVO, DATA, ID_CPF_FOREIGN_KEY) VALUES (NULL, :nome, NOW(), :cpf)');
+                $sql->bindValue(':cpf', $dadosPost['CPF']);
                 $sql->bindValue(':nome', $novo_nome );
 
-                $resultado3 = $sql->execute();          
-            } else {
-                $resultado3 = 1; 
-            }
+                $resultado3 = $sql->execute();
+            }*/
+            $resultado3 = 1; 
 
             if($resultado == 0 || $resultado2 == 0 || $resultado3 == 0){
+                throw new Exception("Falha ao alterar publicação.");
+                
+                return false;
+            }
+            return true;
+        }
+
+        public static function delete($id){
+            $busca_ft = Funcionarios::buscaFoto($id);
+            unlink("app/Img_Funcs/".$busca_ft->ARQUIVO);
+
+            $con = Conexao::getConn();
+
+            $sql = "DELETE FROM tb_dados_pessoais WHERE CPF = :cpf";
+            $sql = $con->prepare($sql);
+            $sql->bindValue(':cpf', $id, PDO::PARAM_STR);
+            $resultado = $sql->execute();
+
+            if($resultado == 0){
                 throw new Exception("Falha ao alterar publicação.");
                 
                 return false;
